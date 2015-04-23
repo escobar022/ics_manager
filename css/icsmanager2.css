@@ -1,0 +1,90 @@
+.ui-timepicker-div .ui-widget-header {
+    margin-bottom: 8px;
+}
+
+.ui-timepicker-div dl {
+    text-align: left;
+}
+
+.ui-timepicker-div dl dt {
+    float: left;
+    clear: left;
+    padding: 0 0 0 5px;
+}
+
+.ui-timepicker-div dl dd {
+    margin: 0 10px 10px 45%;
+}
+
+.ui-timepicker-div td {
+    font-size: 90%;
+}
+
+.ui-tpicker-grid-label {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ui-timepicker-rtl {
+    direction: rtl;
+}
+
+.ui-timepicker-rtl dl {
+    text-align: right;
+    padding: 0 5px 0 0;
+}
+
+.ui-timepicker-rtl dl dt {
+    float: right;
+    clear: right;
+}
+
+.ui-timepicker-rtl dl dd {
+    margin: 0 45% 10px 10px;
+}
+
+.joined {
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.blocked {
+    display: block;
+    margin: 0;
+}
+.blockedfreq {
+    display: block;
+    margin-bottom: 5px;
+}
+.icstextinput {
+    display: block;
+    height: 25px;
+    margin-bottom: 12px;
+}
+
+.icstextselect {
+    font-size: 15px;
+    display: block;
+    height: 28px;
+    padding-left: 4px;
+    padding-right: 10px;
+    margin-bottom: 12px;
+}
+
+.icstextarea {
+    display: block;
+    width: 60%;
+    height: 100px;
+    margin-bottom: 12px;
+
+}
+
+.icsedit {
+    float: right;
+}
+
+#icslist > tbody > tr > td {
+    width: 33%;
+}
