@@ -219,8 +219,8 @@
             // detect which units are supported
             tp_inst.support = detectSupport(
                 tp_inst._defaults.timeFormat +
-                    (tp_inst._defaults.pickerTimeFormat ? tp_inst._defaults.pickerTimeFormat : '') +
-                    (tp_inst._defaults.altTimeFormat ? tp_inst._defaults.altTimeFormat : ''));
+                (tp_inst._defaults.pickerTimeFormat ? tp_inst._defaults.pickerTimeFormat : '') +
+                (tp_inst._defaults.altTimeFormat ? tp_inst._defaults.altTimeFormat : ''));
 
             // controlType is string - key to our this._controls
             if (typeof(tp_inst._defaults.controlType) === 'string') {
@@ -800,13 +800,13 @@
             // If the update was done using the sliders, update the input field.
             var hasChanged = (
                 hour !== parseInt(this.hour, 10) || // sliders should all be numeric
-                    minute !== parseInt(this.minute, 10) ||
-                    second !== parseInt(this.second, 10) ||
-                    millisec !== parseInt(this.millisec, 10) ||
-                    microsec !== parseInt(this.microsec, 10) ||
-                    (this.ampm.length > 0 && (hour < 12) !== ($.inArray(this.ampm.toUpperCase(), this.amNames) !== -1)) ||
-                    (this.timezone !== null && timezone !== this.timezone.toString()) // could be numeric or "EST" format, so use toString()
-                );
+                minute !== parseInt(this.minute, 10) ||
+                second !== parseInt(this.second, 10) ||
+                millisec !== parseInt(this.millisec, 10) ||
+                microsec !== parseInt(this.microsec, 10) ||
+                (this.ampm.length > 0 && (hour < 12) !== ($.inArray(this.ampm.toUpperCase(), this.amNames) !== -1)) ||
+                (this.timezone !== null && timezone !== this.timezone.toString()) // could be numeric or "EST" format, so use toString()
+            );
 
             if (hasChanged) {
 
@@ -1192,30 +1192,30 @@
             };
 
             var regstr = '^' + f.toString()
-                    .replace(/([hH]{1,2}|mm?|ss?|[tT]{1,2}|[zZ]|[lc]|'.*?')/g, function (match) {
-                        var ml = match.length;
-                        switch (match.charAt(0).toLowerCase()) {
-                            case 'h':
-                                return ml === 1 ? '(\\d?\\d)' : '(\\d{' + ml + '})';
-                            case 'm':
-                                return ml === 1 ? '(\\d?\\d)' : '(\\d{' + ml + '})';
-                            case 's':
-                                return ml === 1 ? '(\\d?\\d)' : '(\\d{' + ml + '})';
-                            case 'l':
-                                return '(\\d?\\d?\\d)';
-                            case 'c':
-                                return '(\\d?\\d?\\d)';
-                            case 'z':
-                                return '(z|[-+]\\d\\d:?\\d\\d|\\S+)?';
-                            case 't':
-                                return getPatternAmpm(o.amNames, o.pmNames);
-                            default:    // literal escaped in quotes
-                                return '(' + match.replace(/\'/g, "").replace(/(\.|\$|\^|\\|\/|\(|\)|\[|\]|\?|\+|\*)/g, function (m) {
-                                    return "\\" + m;
-                                }) + ')?';
-                        }
-                    })
-                    .replace(/\s/g, '\\s?') +
+                        .replace(/([hH]{1,2}|mm?|ss?|[tT]{1,2}|[zZ]|[lc]|'.*?')/g, function (match) {
+                            var ml = match.length;
+                            switch (match.charAt(0).toLowerCase()) {
+                                case 'h':
+                                    return ml === 1 ? '(\\d?\\d)' : '(\\d{' + ml + '})';
+                                case 'm':
+                                    return ml === 1 ? '(\\d?\\d)' : '(\\d{' + ml + '})';
+                                case 's':
+                                    return ml === 1 ? '(\\d?\\d)' : '(\\d{' + ml + '})';
+                                case 'l':
+                                    return '(\\d?\\d?\\d)';
+                                case 'c':
+                                    return '(\\d?\\d?\\d)';
+                                case 'z':
+                                    return '(z|[-+]\\d\\d:?\\d\\d|\\S+)?';
+                                case 't':
+                                    return getPatternAmpm(o.amNames, o.pmNames);
+                                default:    // literal escaped in quotes
+                                    return '(' + match.replace(/\'/g, "").replace(/(\.|\$|\^|\\|\/|\(|\)|\[|\]|\?|\+|\*)/g, function (m) {
+                                            return "\\" + m;
+                                        }) + ')?';
+                            }
+                        })
+                        .replace(/\s/g, '\\s?') +
                     o.timeSuffix + '$',
                 order = getFormatPositions(f),
                 ampm = '',
@@ -1449,13 +1449,13 @@
                     tz = tp_inst._defaults.showTimezone !== null ? tp_inst._defaults.showTimezone : tp_inst.support.timezone,
                     dateChars = $.datepicker._possibleChars($.datepicker._get(inst, 'dateFormat')),
                     datetimeChars = tp_inst._defaults.timeFormat.toString()
-                        .replace(/[hms]/g, '')
-                        .replace(/TT/g, ampm ? 'APM' : '')
-                        .replace(/Tt/g, ampm ? 'AaPpMm' : '')
-                        .replace(/tT/g, ampm ? 'AaPpMm' : '')
-                        .replace(/T/g, ampm ? 'AP' : '')
-                        .replace(/tt/g, ampm ? 'apm' : '')
-                        .replace(/t/g, ampm ? 'ap' : '') +
+                            .replace(/[hms]/g, '')
+                            .replace(/TT/g, ampm ? 'APM' : '')
+                            .replace(/Tt/g, ampm ? 'AaPpMm' : '')
+                            .replace(/tT/g, ampm ? 'AaPpMm' : '')
+                            .replace(/T/g, ampm ? 'AP' : '')
+                            .replace(/tt/g, ampm ? 'apm' : '')
+                            .replace(/t/g, ampm ? 'ap' : '') +
                         " " + tp_inst._defaults.separator +
                         tp_inst._defaults.timeSuffix +
                         (tz ? tp_inst._defaults.timezoneList.join('') : '') +
@@ -2019,8 +2019,8 @@
         }
 
         return ((normalized.substr(0, 1) === '-' ? -1 : 1) * // plus or minus
-            ((parseInt(normalized.substr(1, 2), 10) * 60) + // hours (converted to minutes)
-                parseInt(normalized.substr(3, 2), 10))); // minutes
+        ((parseInt(normalized.substr(1, 2), 10) * 60) + // hours (converted to minutes)
+        parseInt(normalized.substr(3, 2), 10))); // minutes
     };
 
     /**
@@ -2218,23 +2218,23 @@
 //    $(".icsdate").datepicker();
 
 
-        $( "#from" ).datepicker({
-            showButtonPanel: true,
-            changeMonth: true,
-            numberOfMonths: 1,
-            minDate: -5,
-            onClose: function( selectedDate ) {
-                $( "#to" ).datepicker( "option", "minDate", selectedDate );
-            }
-        });
-        $( "#to" ).datepicker({
-            showButtonPanel: true,
-            changeMonth: true,
-            numberOfMonths: 1,
-            onClose: function( selectedDate ) {
-                $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-            }
-        });
+    $( "#from" ).datepicker({
+        showButtonPanel: true,
+        changeMonth: true,
+        numberOfMonths: 1,
+        minDate: -5,
+        onClose: function( selectedDate ) {
+            $( "#to" ).datepicker( "option", "minDate", selectedDate );
+        }
+    });
+    $( "#to" ).datepicker({
+        showButtonPanel: true,
+        changeMonth: true,
+        numberOfMonths: 1,
+        onClose: function( selectedDate ) {
+            $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+        }
+    });
 
     $('.icstime').timepicker({
         timeFormat: 'hh:mm tt',
@@ -2312,4 +2312,3 @@
 
 
 })(jQuery);
-
